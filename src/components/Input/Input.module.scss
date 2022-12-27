@@ -1,0 +1,113 @@
+@import "../../styles/variables";
+@import "../../styles/placeholders";
+
+.InputField {
+  position: relative;
+  border: 1px solid #D0CFCF;
+  border-radius: 4px;
+  display: flex;
+  max-width: 380px;
+  background-color: inherit; // to dynamically change background color of label element
+  &:focus-within {
+    .InputLabel {
+      top: 0;
+    }
+  }
+}
+
+.Input, .InputLabel {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 1.625; // 26px
+
+  /* Grey */
+}
+
+.Input {
+  color: rgba(0, 0, 0, 0.87);
+  background: none;
+  border: none;
+  padding: 14px 16px;
+  outline: none;
+  display: block;
+  flex-grow: 1;
+
+  &:not(:placeholder-shown) {
+    & + .InputLabel {
+      top: 0;
+    }
+  }
+}
+
+.InputLabel {
+  color: #7E7E7E;
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  transition: top 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: inherit;
+  padding: 0 4px;
+}
+
+.HelperText {
+  position: absolute;
+  bottom: -20px;
+  left: 16px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.166; // 14px
+
+  color: #7E7E7E;
+}
+
+.InputFieldError {
+  outline: 2px solid $color-error;
+  outline-offset: -1px;
+
+  .HelperText, .InputLabel {
+    color: $color-error;
+  }
+}
+
+.InputRadioField {
+  display: flex;
+  align-items: center;
+  max-width: 380px;
+  gap: 12px;
+
+  input {
+    @extend %visually-hidden; // Hiding default radio input
+    &:checked + .CustomRadioButton::before { // adding opacity to add fade effect
+      opacity: 1;
+    }
+  }
+}
+
+.CustomRadioButton { // Custom radio button
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid $color-blue;
+  border-radius: 50px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $color-blue;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.InputRadioLabel {
+  color: rgba(0, 0, 0, 0.87);
+}

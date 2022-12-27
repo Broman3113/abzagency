@@ -1,0 +1,27 @@
+@import '../../styles/variables';
+
+.Button {
+  font-family: 'Nunito', sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.625; // 26px
+
+  padding: 4px 23px;
+  border: none;
+  border-radius: 80px;
+  color: rgba(0, 0, 0, 0.87);
+
+  cursor: pointer;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:disabled, &:hover:disabled {
+    cursor: not-allowed;
+    background-color: #B4B4B4;
+  }
+}
+
+.Button--yellow {
+  background-color: $color-yellow;
+  &:hover{
+    background-color: #FFE302;
+  }
+}
